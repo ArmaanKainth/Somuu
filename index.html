@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Friend - Somu</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      animation: bgFade 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgFade {
+      0% { background: linear-gradient(135deg, #ffdde1, #ee9ca7); }
+      50% { background: linear-gradient(135deg, #c2e9fb, #a1c4fd); }
+      100% { background: linear-gradient(135deg, #ffdde1, #ee9ca7); }
+    }
+
+    .card {
+      position: relative;
+      text-align: center;
+      background: rgba(255,255,255,0.95);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: float 3s infinite ease-in-out, zoomCard 4s infinite alternate;
+      z-index: 10;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes zoomCard {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff4b5c;
+      text-shadow: 0 0 10px #ff758c, 0 0 20px #ff7eb3;
+      animation: glowText 2s infinite alternate, wiggle 3s infinite;
+    }
+
+    @keyframes glowText {
+      0% { text-shadow: 0 0 5px #ff4b5c, 0 0 10px #ff758c; }
+      100% { text-shadow: 0 0 20px #ff4b5c, 0 0 40px #ff7eb3; }
+    }
+
+    @keyframes wiggle {
+      0%,100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #444;
+      margin: 20px 0;
+      animation: slideText 3s infinite alternate;
+    }
+
+    @keyframes slideText {
+      0% { transform: translateX(-10px); opacity: 0.8; }
+      50% { transform: translateX(10px); opacity: 1; }
+      100% { transform: translateX(-10px); opacity: 0.8; }
+    }
+
+    .heart {
+      font-size: 3rem;
+      color: red;
+      animation: beat 1s infinite, rotateHeart 5s linear infinite;
+    }
+
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    @keyframes rotateHeart {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .emoji {
+      font-size: 2rem;
+      position: absolute;
+      animation: bounce 4s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff4b5c;
+      top: -10px;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Twinkling stars */
+    .star {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: yellow;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+      opacity: 0.7;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+      100% { opacity: 0.2; transform: scale(1); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>For Somu 💖</h1>
+    <p>Somu, you’ve always supported me,<br>
+    made me stronger,<br>
+    and stood by my side.<br>
+    I’m truly lucky to have a friend like you. 🌸</p>
+    <div class="heart">❤️</div>
+  </div>
+
+  <!-- Confetti -->
+  <script>
+    const colors = ['#ff4b5c','#ff758c','#ffb3c1','#fcd5ce','#f8a5c2'];
+    for(let i=0;i<100;i++){
+      let confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+      confetti.style.left = Math.random()*100 + 'vw';
+      confetti.style.animationDuration = (Math.random()*3 + 2) + 's';
+      confetti.style.width = confetti.style.height = (Math.random()*8 + 5) + 'px';
+      document.body.appendChild(confetti);
+    }
+
+    // Twinkling stars
+    for(let i=0;i<50;i++){
+      let star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random()*100 + 'vh';
+      star.style.left = Math.random()*100 + 'vw';
+      star.style.width = star.style.height = (Math.random()*5 + 2) + 'px';
+      star.style.animationDuration = (Math.random()*2 + 1) + 's';
+      document.body.appendChild(star);
+    }
+
+    // Bouncing emojis
+    const emojis = ['🌸','🌟','✨','💫','💖'];
+    for(let i=0;i<10;i++){
+      let emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+      emoji.style.left = Math.random()*90 + 'vw';
+      emoji.style.top = Math.random()*80 + 'vh';
+      emoji.style.animationDuration = (Math.random()*3 + 2) + 's';
+      document.body.appendChild(emoji);
+    }
+  </script>
+
+</body>
+</html>
